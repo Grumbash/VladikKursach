@@ -1,0 +1,58 @@
+body{
+	margin: 0;
+}
+.main-screen{
+	position: relative;
+	background-color: #ff0;
+	overflow: hidden;
+}
+.left-side{
+	position: absolute;
+	left:-100%;
+	/*left: 0;*/
+	z-index: 100;
+	background-color: #000;
+	color: white;
+}
+.top-side{
+	position: absolute;
+	top:-100%;
+	background-color: #00f;
+}
+.right-side{
+	position: absolute;
+	right:-100%;
+	background-color: #f00;
+}
+.down-side{
+	position: absolute;
+	bottom:-100%;
+	background-color: #0f0;
+}
+.main-screen>div.center{
+	
+	background-color: #0ff;
+	position: relative;
+}
+.main-screen>div.center>button{
+	position: absolute;
+}
+.main-screen>div.center>button.left-button{
+	left:0;
+	top:50%;
+}
+.main-screen>div.center>button.top-button{
+	top:0;
+	left:50%;
+}
+.main-screen>div.center>button.right-button{
+	right: 0;
+	top:50%;
+}
+.main-screen>div.center>button.down-button{
+	bottom: 0;
+	right: 50%;
+}
+
+
+
