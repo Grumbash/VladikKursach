@@ -20,18 +20,24 @@ mainScreen.style.height = screenHeight+"px";
 
 center.style.width 		= screenWidth+"px";
 center.style.height 	= screenHeight+"px";
+center.style.left 		= 0;
+center.style.right 		= 0;
+center.style.top 		= 0;
+center.style.bottom 	= 0;
 
-leftSide.style.width 	= screenWidth/2+"px";
+leftSide.style.width 	= screenWidth/4+"px";
 leftSide.style.height	= screenHeight+"px";
+leftSide.style.left 	= -screenWidth/4+"px";
 
-rightSide.style.width 	= screenWidth/2+"px";
+rightSide.style.width 	= screenWidth/4+"px";
 rightSide.style.height	= screenHeight+"px";
+rightSide.style.right 	= -screenWidth/4+"px";
 
 topSide.style.width 	= screenWidth+"px";
-topSide.style.height	= screenHeight/2+"px";
+topSide.style.height	= screenHeight/4+"px";
 
 downSide.style.width 	= screenWidth+"px";
-downSide.style.height	= screenHeight/2+"px";
+downSide.style.height	= screenHeight/4+"px";
 
 // ищим кнопки
 var leftBtn  = document.querySelector('.left-button')
@@ -44,9 +50,14 @@ leftBtn.onclick = function () {
 	if(center.style.left == 0 || center.style.left == 0+"px"){	
 		center.style.left = leftSide.style.width;
 		leftSide.style.left = 0+"px";
+		center.style.top = "";
+		center.style.right = "";
+		center.style.bottom = "";
+		center.removeEventListener('transitionend', ednAnim);
 	}else{
 		center.style.left = 0+"px";
-		leftSide.style.left = -screenWidth/2+"px";
+		leftSide.style.left = -screenWidth/4+"px";
+		center.addEventListener('transitionend', ednAnim);
 	}
 }
 
@@ -54,9 +65,14 @@ topBtn.onclick = function () {
 	if(center.style.top == 0 || center.style.top == 0+"px"){	
 		center.style.top = topSide.style.height;
 		topSide.style.top = 0+"px";
+		center.style.right = "";
+		center.style.left = "";
+		center.style.bottom = "";
+		center.removeEventListener('transitionend', ednAnim);
 	}else{
 		center.style.top = 0+"px";
-		topSide.style.top = -screenHeight/2+"px";
+		topSide.style.top = -screenHeight/4+"px";
+		center.addEventListener('transitionend', ednAnim);
 	}
 }
 
@@ -64,25 +80,38 @@ rightBtn.onclick = function () {
 	if(center.style.right == 0 || center.style.right == 0+"px"){	
 		center.style.right = rightSide.style.width;
 		rightSide.style.right = 0+"px";
-		
+		center.style.top = "";
+		center.style.left = "";
+		center.style.bottom = "";
+		center.removeEventListener('transitionend', ednAnim);
 	}else{
 		center.style.right = 0+"px";
-		rightSide.style.right = screenWidth/2+"px";
-		
+		rightSide.style.right = -screenWidth/4+"px";	
+		center.addEventListener('transitionend', ednAnim);
 	}
 }
 
 downBnt.onclick = function () {
 	if(center.style.bottom == 0 || center.style.bottom == 0+"px"){	
+		center.removeEventListener('transitionend', ednAnim);
 		center.style.bottom = downSide.style.height;
 		downSide.style.bottom = 0+"px";
-		console.log(1);
+		center.style.top = "";
+		center.style.left = "";
+		center.style.right = "";
 		
 	}else{
+		center.addEventListener('transitionend', ednAnim);
 		center.style.bottom = 0+"px";
-		downSide.style.bottom = -screenHeight/2+"px";
-		console.log(2);
+		downSide.style.bottom = -screenHeight/4+"px";
 	}
+}
+
+function ednAnim(){
+	center.style.top = 0;
+	center.style.right = 0;
+	center.style.bottom = 0;
+	center.style.left = 0;
 }
 
 

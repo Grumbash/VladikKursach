@@ -1,37 +1,52 @@
 body{
 	margin: 0;
+}	
+:root{
+	--main-animation: .3s ease; 
 }
 .main-screen{
 	position: relative;
-	background-color: #ff0;
 	overflow: hidden;
+	background: transparent;
+	transition: var(--main-animation);
 }
 .left-side{
 	position: absolute;
 	left:-100%;
-	/*left: 0;*/
 	z-index: 100;
-	background-color: #000;
+	background-image: url(../images/left.png);
+	background-size: cover;
 	color: white;
+	transition: var(--main-animation);
 }
 .top-side{
 	position: absolute;
 	top:-100%;
-	background-color: #00f;
+	background-image: url(../images/top.png);
+	background-size: cover;
+	transition: var(--main-animation);
 }
 .right-side{
 	position: absolute;
 	right:-100%;
-	background-color: #f00;
+	top:0;
+	/*z-index: 1000;*/
+	background-image: url(../images/right.png);
+	background-size: cover;
+	transition: var(--main-animation);
+
 }
 .down-side{
 	position: absolute;
 	bottom:-100%;
-	background-color: #0f0;
+	background-image: url(../images/bottom.png);
+	background-size: cover;
+	transition: var(--main-animation);
 }
 .main-screen>div.center{
-	
-	background-color: #0ff;
+	transition: var(--main-animation);
+	background-image: url(../images/center.png);
+	background-size: cover;
 	position: relative;
 }
 .main-screen>div.center>button{
